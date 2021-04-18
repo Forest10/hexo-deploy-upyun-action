@@ -13,14 +13,14 @@ git clone https://${PERSONAL_TOKEN}@github.com/Forest10/my-hexo-conf.git udx-db
 cd udx-db
 git checkout udx-db
 git pull
-mv -f $GITHUB_WORKSPACE/public/* /github/home/udx-db
+cp -r $GITHUB_WORKSPACE/public/* /github/home/udx-db
 echo $(date) >date.txt
 git add -A
 git commit -m '哈哈'
 echo 'Start push'
 git push
 echo "push to udx-db-git successful!"
-git diff  HEAD^ HEAD --name-only | xargs zip update.zip
+git diff  HEAD^ HEAD --name-only | xargs mv update.zip
 
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
