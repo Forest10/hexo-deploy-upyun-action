@@ -33,7 +33,11 @@ UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
 mkdir -p $UPDATE_BLOG_FILE
 git diff  HEAD^ HEAD --name-only >> diff.txt
 echo 'diff file===>' && cat diff.txt
-for i in $(cat diff.txt); do cp -r ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE}; done
+for i in $(cat diff.txt); do
+  ## 去除两边双引号
+  fileName=${i} |  sed 's/\"//g'
+  cp -r ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE};
+done
 ### 执行upx upload
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
