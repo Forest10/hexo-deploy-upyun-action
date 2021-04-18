@@ -17,14 +17,14 @@ cd $GITHUB_WORKSPACE
 ./node_modules/hexo/bin/hexo generate
 
 #### 用git diff搞定差异文件
-cd /github/home
+UDX_DB_DIR=$GITHUB_WORKSPACE/udx-db
 git config --global user.email "github.forest10@gmail.com"
 git config --global user.name "Forest10"
-git clone https://${PERSONAL_TOKEN}@github.com/Forest10/my-hexo-conf.git udx-db
-cd udx-db
+git clone https://${PERSONAL_TOKEN}@github.com/Forest10/my-hexo-conf.git $UDX_DB_DIR
+cd $UDX_DB_DIR
 git checkout udx-db
 git pull
-cp -r $GITHUB_WORKSPACE/public/* /github/home/udx-db
+cp -r $GITHUB_WORKSPACE/public/* $UDX_DB_DIR
 git add -A
 git commit -m 'push by hexo-deploy-upyun-action'
 git push
@@ -32,6 +32,7 @@ echo "push to udx-db-git successful!"
 UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
 mkdir -p $UPDATE_BLOG_FILE
 git diff  HEAD^ HEAD --name-only >> diff.txt
+echo 'diff file===>' && cat diff.txt
 for i in $(cat diff.txt); do cp -r /github/home/udx-db/${i} ${UPDATE_BLOG_FILE}; done
 ### 执行upx upload
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
