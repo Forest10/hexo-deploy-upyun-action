@@ -19,7 +19,7 @@ if [ -d ${UDX_DB_HOME} ];then
   cp -r * ${UDX_DB_HOME}
   else
   echo "文件夹不存在,新建"
-  mkdir ${UDX_DB_HOME}
+  mkdir -p ${UDX_DB_HOME}
   cp -r "${UDX_DB_GIT_DIR}" ${UDX_DB_HOME}
 fi
 
