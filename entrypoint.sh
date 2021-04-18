@@ -41,11 +41,11 @@ for i in $(cat diff.txt); do
   cp -r ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE};
 done
 ### 执行upx upload
-cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
-./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
-echo "start upx upload!"
-./upx sync ${UPDATE_BLOG_FILE} / -v
-echo "upx upload successful!"
+#cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
+#./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
+#echo "start upx upload!"
+#./upx sync ${UPDATE_BLOG_FILE} / -v
+#echo "upx upload successful!"
 
 
 
