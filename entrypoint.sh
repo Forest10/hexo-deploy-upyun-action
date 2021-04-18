@@ -36,6 +36,8 @@ echo 'diff file===>' && cat diff.txt
 for i in $(cat diff.txt); do
   ## 去除两边双引号
   fileName=${i} |  sed 's/\"//g'
+  echo 'fileName==>'
+  echo ${fileName}
   cp -r ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE};
 done
 ### 执行upx upload
