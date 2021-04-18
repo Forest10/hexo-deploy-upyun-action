@@ -26,7 +26,7 @@ mkdir -p $GITHUB_WORKSPACE/update_blog_file
 git diff  HEAD^ HEAD --name-only >> diff.txt
 cat diff.txt
 for i in $(cat diff.txt); do cp -r /github/home/udx-db/${i} ${UPDATE_BLOG_FILE}; done
-ls ${UPDATE_BLOG_FILE}
+cd ${UPDATE_BLOG_FILE} && ls
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
 ./upx info
