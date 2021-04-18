@@ -25,8 +25,6 @@ cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
 ./upx info
 ./upx sync $GITHUB_WORKSPACE/public / -v
-echo 'second find upxDb'
-find ~ -name .upx.db  -d
 cd ${UDX_DB_HOME} && ls
 ## add upx.db to upx.db git
 #cp -r /${UDX_DB_HOME} /${UDX_DB_GIT_DIR}
