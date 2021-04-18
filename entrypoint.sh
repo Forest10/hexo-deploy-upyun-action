@@ -29,6 +29,7 @@ git add -A
 git commit -m 'push by hexo-deploy-upyun-action'
 git push
 echo "push to udx-db-git successful!"
+git pull
 UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
 mkdir -p $UPDATE_BLOG_FILE
 git diff  HEAD^ HEAD --name-only|sed 's/\"//g' >> diff.txt
