@@ -21,6 +21,7 @@ if [ -d ${UDX_DB_HOME} ];then
   echo "文件夹不存在,新建"
   mkdir -p ${UDX_DB_HOME}
   cp -r "${UDX_DB_GIT_DIR}" ${UDX_DB_HOME}
+  cd  ${UDX_DB_HOME} && ls
 fi
 
 
