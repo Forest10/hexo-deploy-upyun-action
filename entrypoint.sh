@@ -22,7 +22,7 @@ echo 'Start push'
 git push
 echo "push to udx-db-git successful!"
 UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
-mkdir -p $GITHUB_WORKSPACE/update_blog_file
+mkdir -p $UPDATE_BLOG_FILE
 git diff  HEAD^ HEAD --name-only >> diff.txt
 cat diff.txt
 for i in $(cat diff.txt); do cp -r /github/home/udx-db/${i} ${UPDATE_BLOG_FILE}; done
