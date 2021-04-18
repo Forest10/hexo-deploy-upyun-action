@@ -31,11 +31,11 @@ git push
 echo "push to udx-db-git successful!"
 UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
 mkdir -p $UPDATE_BLOG_FILE
-git diff  HEAD^ HEAD --name-only >> diff.txt
+git diff  HEAD^ HEAD --name-only|sed 's/\"//g' >> diff.txt
 echo 'diff file===>' && cat diff.txt
 for i in $(cat diff.txt); do
   # shellcheck disable=SC2225
-  cp -r ${UDX_DB_DIR}/${i}|sed 's/\"//g' ${UPDATE_BLOG_FILE};
+  cp -r ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
 done
 cd ${UPDATE_BLOG_FILE} && ls
 ### 执行upx upload
