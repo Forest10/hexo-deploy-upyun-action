@@ -1,5 +1,5 @@
-name: 'hexo-deploy-with-CNAME-enabled'
-description: 'This GitHub action will handle the building and deploying process of hexo to qiniu cloud'
+name: 'hexo-deploy-upyun-action'
+description: 'This GitHub action will handle the building and deploying process of hexo to upyun cloud'
 author: 'Forest10'
 runs:
   using: 'docker'
