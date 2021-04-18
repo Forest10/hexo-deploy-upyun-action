@@ -34,12 +34,10 @@ mkdir -p $UPDATE_BLOG_FILE
 git diff  HEAD^ HEAD --name-only >> diff.txt
 echo 'diff file===>' && cat diff.txt
 for i in $(cat diff.txt); do
-  ## 去除两边双引号
-  fileName=${i} |  sed 's/\"//g'
-  echo 'fileName==>'
-  echo ${fileName}
-  cp -r ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE};
+  # shellcheck disable=SC2225
+  cp -r ${UDX_DB_DIR}/${i}|sed 's/\"//g' ${UPDATE_BLOG_FILE};
 done
+cd ${UPDATE_BLOG_FILE} && ls
 ### 执行upx upload
 #cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 #./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
