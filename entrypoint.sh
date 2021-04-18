@@ -16,6 +16,9 @@ UDX_DB_HOME=/home/runner/work/_temp/_github_home/.upx.db
 if [ -d ${UDX_DB_HOME} ];then
   echo "文件夹存在"
   cp -r * ${UDX_DB_HOME}
+  else
+  echo "文件夹不存在,新建"
+  mkdir ${UDX_DB_HOME}
 fi
 
 
