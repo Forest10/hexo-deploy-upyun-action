@@ -20,7 +20,7 @@ git commit -m '哈哈'
 echo 'Start push'
 git push
 echo "push to udx-db-git successful!"
-git diff  HEAD^ HEAD --name-only | xargs zip $GITHUB_WORKSPACE/public/update_blog_file.zip
+git diff  HEAD^ HEAD --name-only -print0 | xargs -0 zip $GITHUB_WORKSPACE/public/update_blog_file.zip
 
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
