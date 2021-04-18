@@ -1,3 +1,6 @@
+#!/usr/bin/bash -e
+
+
 set -e
 # Directs the action to the the Github workspace.
 cd $GITHUB_WORKSPACE
