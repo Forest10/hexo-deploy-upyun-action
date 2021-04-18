@@ -7,7 +7,7 @@ cd $GITHUB_WORKSPACE
 #echo "Generate file ..."
 ./node_modules/hexo/bin/hexo generate
 ###判断.upx.db存在?
-git clone git@github.com:Forest10/my-hexo-conf.git udx-db
+git clone https://$PERSONAL_TOKEN@github.com/Forest10/my-hexo-conf.git udx-db
 cd udx-db
 UDX_DB_GIT_DIR=$(pwd)
 git checkout udx-db
