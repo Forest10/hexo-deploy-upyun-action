@@ -8,8 +8,8 @@ cd $GITHUB_WORKSPACE
 ./node_modules/hexo/bin/hexo generate
 ###判断.upx.db存在?
 # 设置用户名mail
-git config user.name "Forest10"
-git config user.email "github.forest10@gmail.com"
+git config --global user.email "github.forest10@gmail.com"
+git config --global user.name "Forest10"
 git clone https://$PERSONAL_TOKEN@github.com/Forest10/my-hexo-conf.git udx-db
 cd udx-db
 UDX_DB_GIT_DIR=$(pwd)
