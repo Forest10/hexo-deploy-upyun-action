@@ -24,7 +24,7 @@ if [ -d ${UDX_DB_HOME} ];then
 fi
 
 
-cd upx-dir/upx-command-dir
+cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
 ./upx info
 ./upx sync $GITHUB_WORKSPACE/public / -v
