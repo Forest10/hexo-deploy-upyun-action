@@ -11,4 +11,6 @@ cd upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
 ./upx info
 cd $GITHUB_WORKSPACE
+
+pwd && ls
 upx-dir/upx-command-dir/./upx sync /public / -v
