@@ -8,12 +8,12 @@ cd $GITHUB_WORKSPACE
 ./node_modules/hexo/bin/hexo generate
 ###判断.upx.db存在?
 mkdir -p /github/home/.upx.db
-cd /github/home/.upx.db
+cd /github/home
 git clone https://${PERSONAL_TOKEN}@github.com/Forest10/my-hexo-conf.git udx-db
 cd udx-db
 git checkout udx-db
 git pull
-cp /home/runner/work/_temp/_github_home/udx-db/*  /home/runner/work/_temp/_github_home/.upx.db
+cp /github/home/udx-db/*  /github/home/.upx.db
 
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
