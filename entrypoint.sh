@@ -15,8 +15,6 @@ cd $GITHUB_WORKSPACE
 #UDX_DB_GIT_DIR=$(pwd)
 #git checkout udx-db
 #git pull
-echo 'first find upxDb'
-sudo find ~ -name .upx.db  -d
 UDX_DB_HOME=/home/runner/work/_temp/_github_home/.upx.db
 #mkdir -p ${UDX_DB_HOME}
 #cd ${UDX_DB_HOME}
@@ -28,7 +26,7 @@ cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx info
 ./upx sync $GITHUB_WORKSPACE/public / -v
 echo 'second find upxDb'
-sudo find ~ -name .upx.db  -d
+find ~ -name .upx.db  -d
 cd ${UDX_DB_HOME} && ls
 ## add upx.db to upx.db git
 #cp -r /${UDX_DB_HOME} /${UDX_DB_GIT_DIR}
