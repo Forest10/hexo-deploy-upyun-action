@@ -21,15 +21,16 @@ git commit -m '哈哈'
 echo 'Start push'
 git push
 echo "push to udx-db-git successful!"
+UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
 mkdir -p $GITHUB_WORKSPACE/update_blog_file
 git diff  HEAD^ HEAD --name-only >> diff.txt
 cat diff.txt
-for i in $(cat diff.txt); do cp -r /github/home/udx-db/${i} $GITHUB_WORKSPACE/public/update_blog_file; done
-
+for i in $(cat diff.txt); do cp -r /github/home/udx-db/${i} ${UPDATE_BLOG_FILE}; done
+ls ${UPDATE_BLOG_FILE}
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
 ./upx info
-./upx sync $GITHUB_WORKSPACE/public/update_blog_file / -v
+./upx sync ${UPDATE_BLOG_FILE} / -v
 
 
 
