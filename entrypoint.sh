@@ -7,14 +7,13 @@ cd $GITHUB_WORKSPACE
 #echo "Generate file ..."
 ./node_modules/hexo/bin/hexo generate
 
-cp -r  $GITHUB_WORKSPACE/upx-dir/upx-db /home/runner/work/_temp/_github_home/.upx.db
 
 
 cd upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
 ./upx info
+cp -r  $GITHUB_WORKSPACE/upx-dir/upx-db /home/runner/work/_temp/_github_home/.upx.db
 ./upx sync $GITHUB_WORKSPACE/public / -v
-
 cp -r /home/runner/work/_temp/_github_home/.upx.db $GITHUB_WORKSPACE/upx-dir/upx-db
 
 
