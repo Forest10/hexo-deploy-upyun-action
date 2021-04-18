@@ -1,4 +1,4 @@
-name: 'hexo-deploy-upyun-action'
+name: 'hexo-and-upx-2-upyun-action'
 description: 'This GitHub action will handle the building and deploying process of hexo to upyun cloud'
 author: 'Forest10'
 runs:
