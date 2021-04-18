@@ -1,6 +1,14 @@
 #!/bin/sh -l
 
 set -e
+
+
+
+if [ -z "$PERSONAL_TOKEN" ]; then
+  echo "You must provide the action with either a Personal Access Token or the GitHub Token secret in order to deploy."
+  exit 1
+fi
+
 # Directs the action to the the Github workspace.
 cd $GITHUB_WORKSPACE
 # use hexo from cache
