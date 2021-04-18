@@ -1,5 +1,4 @@
-#!/usr/bin/bash -e
-
+#!/bin/sh -l
 
 set -e
 # Directs the action to the the Github workspace.
