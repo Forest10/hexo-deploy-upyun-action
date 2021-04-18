@@ -14,6 +14,7 @@ cd udx-db
 git checkout udx-db
 git pull
 cp /github/home/udx-db/*  /github/home/.upx.db
+cd /github/home/.upx.db && ls
 
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
