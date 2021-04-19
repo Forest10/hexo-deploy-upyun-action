@@ -36,6 +36,7 @@ git diff  HEAD^ HEAD --name-only|sed 's/\"//g' >> diff.txt
 lineLiner="/"
 for i in $(cat diff.txt); do
 fileName=${i}
+echo 'fileName' ${fileName}
 result=$(echo $fileName | grep "${lineLiner}")
 if [ "$result" != "" ]
 then
