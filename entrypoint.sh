@@ -24,38 +24,38 @@ git clone https://${PERSONAL_TOKEN}@github.com/Forest10/my-hexo-conf.git $UDX_DB
 cd $UDX_DB_DIR
 git checkout udx-db
 git pull
-cp -r $GITHUB_WORKSPACE/public/* $UDX_DB_DIR
+cp -r "$GITHUB_WORKSPACE"/public/* "$UDX_DB_DIR"
 git add -A
 git commit -m 'push by hexo-deploy-upyun-action'
 git push
 echo "push to udx-db-git successful!"
 git pull
 UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
-mkdir -p $UPDATE_BLOG_FILE
+mkdir -p "$UPDATE_BLOG_FILE"
 git diff  HEAD^ HEAD --name-only|sed 's/\"//g' >> diff.txt
 lineLiner="/"
 for i in $(cat diff.txt); do
 fileName=${i}
-echo 'fileName' ${fileName}
-result=$(echo $fileName | grep "${lineLiner}")
+echo 'fileName' "${fileName}"
+result=$(echo "$fileName" | grep "${lineLiner}")
 if [ "$result" != "" ]
 then
     cutFilePath=${fileName%/*}
-    mkdir -p ${UPDATE_BLOG_FILE}/${cutFilePath}
-    cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE}/${cutFilePath};
+    mkdir -p "${UPDATE_BLOG_FILE}"/"${cutFilePath}"
+    cp -r -n "${UDX_DB_DIR}"/"${i}" "${UPDATE_BLOG_FILE}"/"${cutFilePath}";
 else
-    cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
+    cp -r -n "${UDX_DB_DIR}"/"${i}" "${UPDATE_BLOG_FILE}";
 fi
 done
 
 echo 'UPDATE_BLOG_FILE===>' ${UPDATE_BLOG_FILE}
-cd ${UPDATE_BLOG_FILE} && ls
+cd "${UPDATE_BLOG_FILE}" && ls
 
 ### 执行upx upload
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
-./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
+./upx login "${BUCKET_NAME}" "${UPX_NAME}" "${UPX_PASSWORD}"
 echo "start upx upload!"
-./upx sync ${UPDATE_BLOG_FILE} / -v
+./upx sync "${UPDATE_BLOG_FILE}" / -v
 echo "upx upload successful!"
 
 
