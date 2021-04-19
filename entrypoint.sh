@@ -35,17 +35,18 @@ mkdir -p $UPDATE_BLOG_FILE
 git diff  HEAD^ HEAD --name-only|sed 's/\"//g' >> diff.txt
 for i in $(cat diff.txt); do
   # shellcheck disable=SC2225
-  cp -r ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
+  echo 'fileName' ${i}
+  cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
 done
 echo 'UPDATE_BLOG_FILE===>'
 cd ${UPDATE_BLOG_FILE} && ls
 ## 执行upx upload
-cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
-./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
-echo "start upx upload!"
-./upx sync ${UPDATE_BLOG_FILE} / -v
-echo "upx upload successful!"
-
+#cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
+#./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
+#echo "start upx upload!"
+#./upx sync ${UPDATE_BLOG_FILE} / -v
+#echo "upx upload successful!"
+#
 
 
 
