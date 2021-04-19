@@ -13,7 +13,7 @@ fi
 cd $GITHUB_WORKSPACE
 # use hexo from cache
 ./node_modules/hexo/bin/hexo clean
-#echo "Generate file ..."
+#"Generate file ..."
 ./node_modules/hexo/bin/hexo generate
 
 #### 用git diff搞定差异文件
@@ -39,24 +39,19 @@ set +e
 lineLiner="/"
 for i in $(cat diff.txt); do
 fileName=${i}
-echo 'fileName' "${fileName}"
 result=$(echo "$fileName" | grep "${lineLiner}")
 if [ "$result" != "" ]
 then
-    echo 'fileName1' "${fileName}"
     cutFilePath=${fileName%/*}
     mkdir -p "${UPDATE_BLOG_FILE}"/"${cutFilePath}"
     cp -r -n "${UDX_DB_DIR}"/"${i}" "${UPDATE_BLOG_FILE}"/"${cutFilePath}";
 else
-    echo 'fileName2' "${fileName}"
     cp -r -n "${UDX_DB_DIR}"/"${i}" "${UPDATE_BLOG_FILE}";
 fi
 done
 ##开启failFast
 set -e
 
-echo 'UPDATE_BLOG_FILE===>' ${UPDATE_BLOG_FILE}
-cd "${UPDATE_BLOG_FILE}" && ls
 
 ### 执行upx upload
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
