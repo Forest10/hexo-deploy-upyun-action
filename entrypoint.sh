@@ -37,7 +37,7 @@ lineLiner="/"
 for i in $(cat diff.txt); do
 fileName=${i}
 result=$(echo $fileName | grep "${lineLiner}")
-if [[ "$result" != "" ]]
+if [ "$result" != "" ]
 then
     cutFilePath=${fileName%/*}
     mkdir -p ${des}/${cutFilePath}
