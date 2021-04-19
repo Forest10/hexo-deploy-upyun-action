@@ -47,7 +47,7 @@ else
 fi
 done
 
-echo 'UPDATE_BLOG_FILE===>'
+echo 'UPDATE_BLOG_FILE===>' ${UPDATE_BLOG_FILE}
 cd ${UPDATE_BLOG_FILE} && ls
 
 #
