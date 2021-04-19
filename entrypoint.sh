@@ -40,7 +40,7 @@ result=$(echo $fileName | grep "${lineLiner}")
 if [ "$result" != "" ]
 then
     cutFilePath=${fileName%/*}
-    mkdir -p ${des}/${cutFilePath}
+    mkdir -p ${UPDATE_BLOG_FILE}/${cutFilePath}
     cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE}/${cutFilePath};
 else
     cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
