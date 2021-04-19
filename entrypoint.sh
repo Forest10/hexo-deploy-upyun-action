@@ -40,10 +40,12 @@ echo 'fileName' "${fileName}"
 result=$(echo "$fileName" | grep "${lineLiner}")
 if [ "$result" != "" ]
 then
+    echo 'fileName1' "${fileName}"
     cutFilePath=${fileName%/*}
     mkdir -p "${UPDATE_BLOG_FILE}"/"${cutFilePath}"
     cp -r -n "${UDX_DB_DIR}"/"${i}" "${UPDATE_BLOG_FILE}"/"${cutFilePath}";
 else
+    echo 'fileName2' "${fileName}"
     cp -r -n "${UDX_DB_DIR}"/"${i}" "${UPDATE_BLOG_FILE}";
 fi
 done
