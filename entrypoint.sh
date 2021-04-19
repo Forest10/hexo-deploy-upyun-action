@@ -1,5 +1,5 @@
 #!/bin/sh -l
-
+##开启failFast
 set -e
 
 
@@ -33,6 +33,9 @@ git pull
 UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
 mkdir -p "$UPDATE_BLOG_FILE"
 git diff  HEAD^ HEAD --name-only|sed 's/\"//g' >> diff.txt
+##关闭failFast
+set +e
+
 lineLiner="/"
 for i in $(cat diff.txt); do
 fileName=${i}
@@ -49,6 +52,8 @@ else
     cp -r -n "${UDX_DB_DIR}"/"${i}" "${UPDATE_BLOG_FILE}";
 fi
 done
+##开启failFast
+set -e
 
 echo 'UPDATE_BLOG_FILE===>' ${UPDATE_BLOG_FILE}
 cd "${UPDATE_BLOG_FILE}" && ls
