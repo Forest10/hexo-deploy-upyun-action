@@ -33,10 +33,18 @@ git pull
 UPDATE_BLOG_FILE=$GITHUB_WORKSPACE/public/update_blog_file
 mkdir -p $UPDATE_BLOG_FILE
 git diff  HEAD^ HEAD --name-only|sed 's/\"//g' >> diff.txt
+lineLiner="/"
 for i in $(cat diff.txt); do
-  # shellcheck disable=SC2225
-  echo 'fileName' ${i}
-  cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
+fileName=${i}
+result=$(echo $fileName | grep "${lineLiner}")
+if [[ "$result" != "" ]]
+then
+    cutFilePath=${fileName%/*}
+    mkdir -p ${des}/${cutFilePath}
+    cp -r -n ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE}/${cutFilePath};
+else
+    cp -r -n ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE};
+fi
 done
 echo 'UPDATE_BLOG_FILE===>'
 cd ${UPDATE_BLOG_FILE} && ls
