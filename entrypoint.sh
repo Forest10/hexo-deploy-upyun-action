@@ -46,8 +46,11 @@ else
     cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
 fi
 done
+
 echo 'UPDATE_BLOG_FILE===>'
 cd ${UPDATE_BLOG_FILE} && ls
+
+
 ## 执行upx upload
 cd $GITHUB_WORKSPACE/upx-dir/upx-command-dir
 ./upx login ${BUCKET_NAME} ${UPX_NAME} ${UPX_PASSWORD}
