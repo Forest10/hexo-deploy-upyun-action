@@ -41,9 +41,9 @@ if [ "$result" != "" ]
 then
     cutFilePath=${fileName%/*}
     mkdir -p ${des}/${cutFilePath}
-    cp -r -n ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE}/${cutFilePath};
+    cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE}/${cutFilePath};
 else
-    cp -r -n ${UDX_DB_DIR}/${fileName} ${UPDATE_BLOG_FILE};
+    cp -r -n ${UDX_DB_DIR}/${i} ${UPDATE_BLOG_FILE};
 fi
 done
 echo 'UPDATE_BLOG_FILE===>'
